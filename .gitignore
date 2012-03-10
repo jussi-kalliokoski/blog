@@ -1,0 +1,5 @@
+public_html/css/fonts
+public_html/posts/*.html
+public_html/tags/*.html
+public_html/*.html
+node_modules

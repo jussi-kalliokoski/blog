@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><% $title %></title>
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+	<% $navHeader %>
+	<section>
+		<article>
+			<h2><% $title %></h2>
+			<% $bodyHTML %>
+			<p>Posted <time itemProp="publishDate" datetime="<% $date %>"><% $date %></time>.</p>
+			<ul class="tags"><% $tagsHTML %></ul>
+		</article>
+	</section>
+	<link rel="stylesheet" href="/css/fonts/sansation/regular.css" />
+</body>
+</html>

@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    position: relative;
+}
+
+body {
+    font-family: SansationRegular, Arial, sans-serif;
+    background-color: #1b1d1e;
+    color: #ccccc6;
+}
+
+section {
+    display: block;
+    min-height: 600px;
+    padding: 0.5em;
+}
+
+a {
+    color: #BEED5F;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+nav > a {
+    width: 100px;
+    padding: 10px;
+    font-size: 120%;
+}
+
+nav > a, section {
+    background-color: #262729;
+    box-shadow: 0 0 1px #262729;
+}
+
+header > h1 {
+    margin: 20px;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 10px;
+}
+
+@media (min-width: 1000px) and (min-device-width: 1000px) {
+    header, nav, section {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
