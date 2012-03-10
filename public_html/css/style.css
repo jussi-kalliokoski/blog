@@ -39,7 +39,22 @@ header > h1 {
 }
 
 p, h1, h2, h3, h4, h5, h6 {
-	margin: 10px;
+    margin: 10px;
+}
+
+ul.tags {
+    display: block;
+    list-style-type: none;
+    background-color: #1b1d1e;
+    padding: 8px;
+}
+
+ul.tags li {
+    display: inline-block;
+}
+
+article {
+    margin: 16px;
 }
 
 @media (min-width: 1000px) and (min-device-width: 1000px) {
