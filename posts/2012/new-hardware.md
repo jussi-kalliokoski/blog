@@ -26,7 +26,11 @@ The parts have arrived, let's get our hands dirty. Let's start by booting to tha
 
 ### Switching it up
 
-After the transfer was complete, it was time to plug the 1.5TB HD in to the dock and format it, using the laptop. Yayy, 1.5TB of free NTFS space. Ok, let's plug it back in the desktop, fire up the windows and transfer the data back to the big one. ```grub rescue >```. Oops, yeah, I did have the grub installed on the 1.5TB one, didn't I? Nice, so I can't boot to Windows without reinstalling grub. I'll just burn an Ubuntu Live CD and get rolling. Great, that thing does take a long time to boot, and the DVD drive makes an ugly noise while at it. Let's pretend we don't hear it, and just move the files back. Done. Now turn off the computer, take out the 80GB hard drives and put them in the closet as backups. Now install the SSD (wow is that light and small, or what?). Mine came with a sticker that said "MY SSD IS FASTER THAN YOUR HD". All well, let's install Windows (64 bit, no less, we actually use for those extra bits now), and save about 10GB at the end of the SSD for Archlinux. That was simple, and works fine if you disregard the lack of drivers. Now let's get that 8GB RAM in.
+After the transfer was complete, it was time to plug the 1.5TB HD in to the dock and format it, using the laptop. Yayy, 1.5TB of free NTFS space. Ok, let's plug it back in the desktop, fire up the windows and transfer the data back to the big one.
+
+```grub rescue >```
+
+Oops, yeah, I did have the grub installed on the 1.5TB one, didn't I? Nice, so I can't boot to Windows without reinstalling grub. I'll just burn an Ubuntu Live CD and get rolling. Great, that thing does take a long time to boot, and the DVD drive makes an ugly noise while at it. Let's pretend we don't hear it, and just move the files back. Done. Now turn off the computer, take out the 80GB hard drives and put them in the closet as backups. Now install the SSD (wow is that light and small, or what?). Mine came with a sticker that said "MY SSD IS FASTER THAN YOUR HD". All well, let's install Windows (64 bit, no less, we actually use for those extra bits now), and save about 10GB at the end of the SSD for Archlinux. That was simple, and works fine if you disregard the lack of drivers. Now let's get that 8GB RAM in.
 
 ### The memory doesn't fail
 
