@@ -44,7 +44,7 @@ function ARTICLE (p) {
 
 function Post (body, filename) {
 	var l;
-	while (l = /\s+([^:]+)\s*:\s*([^\n\r]+)[\n\r]+/.exec(body)) {
+	while (l = /    ([^:]+)\s*:\s*([^\n\r]+)[\n\r]+/.exec(body)) {
 		body = body.substr(l[0].length);
 		this[l[1]] = l[2];
 	}
