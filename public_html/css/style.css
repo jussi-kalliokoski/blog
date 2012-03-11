@@ -34,6 +34,12 @@ nav > a, section {
     box-shadow: 0 0 1px #262729;
 }
 
+a.comments {
+    display: block;
+    margin: 10px;
+    text-align: right;
+}
+
 header > h1 {
     margin: 20px;
 }
