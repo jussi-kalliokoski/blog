@@ -106,10 +106,11 @@ ls('posts').forEach(function (year) {
 });
 
 posts.sort();
+posts.reverse();
 
 save('public_html/index.html', simpleTemplate('index', {
 	navHeader: templates['nav-header'],
-	articlesHTML: posts.map(ARTICLE),
+	articlesHTML: posts.map(ARTICLE).join('\n'),
 }));
 
 posts.forEach(function (p) {
@@ -124,6 +125,6 @@ tags.list.forEach(function (t) {
 	save(['public_html', 'tags', t + '.html'], simpleTemplate('tag-page', {
 		name: t,
 		navHeader: templates['nav-header'],
-		articlesHTML: tags.get(t).map(ARTICLE),
+		articlesHTML: tags.get(t).map(ARTICLE).join('\n'),
 	}));
 });

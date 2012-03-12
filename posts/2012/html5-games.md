@@ -1,7 +1,7 @@
     title: HTML5 as a gaming platform
     date: 2012/03/12
     tags: html5 games mandreel emscripten nacl
-    issue: #2
+    issue: 2
 
 ### Hype The Markup Language
 
