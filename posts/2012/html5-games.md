@@ -2,6 +2,7 @@
     date: 2012/03/12
     tags: html5 games mandreel emscripten nacl
     issue: 2
+    hackernews: 3693522
 
 ### Hype The Markup Language
 

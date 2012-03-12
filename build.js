@@ -59,12 +59,20 @@ function Post (body, filename) {
 		return simpleTemplate('tag', {name: t});
 	}).join('\n');
 
+	comments.forEach((function (c) {
+		if (({}).hasOwnProperty.call(this, c)) {
+			this.commentsHTML += simpleTemplate('comments-' + c, this);
+		}
+	}).bind(this));
+
 	this.articleHTML = simpleTemplate('article', this);
 
 	posts.push(this);
 }
 
 Post.prototype = {
+	commentsHTML: '',
+
 	toString: function () {
 		return this.date;
 	},
@@ -92,9 +100,15 @@ var tags = {
 
 	list: [],
 };
+var comments = [];
 
 ls('templates', /\.html$/i).forEach(function (p) {
-	templates[p.substr(0, p.length - 5)] = read(['templates', p]);
+	var name = p.substr(0, p.length - 5);
+	templates[name] = read(['templates', p]);
+
+	if (/^comments-.+$/.test(name)) {
+		comments.push(name.substr(9));
+	}
 });
 
 Post.prototype.navHeader = templates['nav-header'];
