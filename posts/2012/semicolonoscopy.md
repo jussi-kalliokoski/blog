@@ -5,78 +5,28 @@
 
 ### Respect
 
-If you stumbled on this, you've probably read where this all [started from](https://github.com/twitter/bootstrap/issues/3057).
-An issue was reported for [Twitter Bootstrap](https://github.com/twitter/bootstrap), because [JSMin](http://www.crockford.com/javascript/jsmin.html) failed at minifying the code in bootstrap, due to a combination of two simple lines.
-[@fat](https://twitter.com/#!/fat) responded that the code is correct and that the problem is with JSMin, and closed the issue.
-While I disagree a bit with that decision, since it's breaking things, I acknowledge that he's correct in saying so, and it's his decision.
+If you stumbled on this, you've probably read where this all [started from](https://github.com/twitter/bootstrap/issues/3057). An issue was reported for [Twitter Bootstrap](https://github.com/twitter/bootstrap), because [JSMin](http://www.crockford.com/javascript/jsmin.html) failed at minifying the code in bootstrap, due to a combination of two simple lines. [@fat](https://twitter.com/#!/fat) responded that the code is correct and that the problem is with JSMin, and closed the issue. While I disagree a bit with that decision, since it's breaking things, I acknowledge that he's correct in saying so, and it's his decision.
 
 ### Here comes the crapstorm
 
-Of course, Doug Crockford came in guns blazing and said that the piece of code is "insanely stupid".
-I'm not surprised, he's quite keen on his opinions (and he actually fixed JSMin and jshint to tolerate this), but it didn't stop there.
-Probably every single JS developer out there went to express their feelings about semicolons and to blame the developers of Bootstrap of being lazy, not fit for the job etc, etc.
-All this regardless of whether they ever used Twitter Bootstrap or even were going to.
-This pretty much confirms what I said in my previous blog post about developers being keen to show other people off because their choices differ from their own.
-So, the basic idea here is "hey we made something cool, and we're giving it to you, for free!" and the response is "you douchebag hipsters, screw you and your not using semicolons".
-What is this?
-What's wrong with people?
-What happened to "The End of Negativity"?
+Of course, Doug Crockford came in guns blazing and said that the piece of code is "insanely stupid". I'm not surprised, he's quite keen on his opinions (and he actually fixed JSMin and jshint to tolerate this), but it didn't stop there. Probably every single JS developer out there went to express their feelings about semicolons and to blame the developers of Bootstrap of being lazy, not fit for the job etc, etc. All this regardless of whether they ever used Twitter Bootstrap or even were going to. This pretty much confirms what I said in my previous blog post about developers being keen to show other people off because their choices differ from their own. So, the basic idea here is "hey we made something cool, and we're giving it to you, for free!" and the response is "you douchebag hipsters, screw you and your not using semicolons". What is this? What's wrong with people? What happened to "The End of Negativity"?
 
 ### Automatic Semicolon Insertion
 
-Commonly abbreviated as ASI, it's an error recovery mechanism for missing semicolons, inserting them for you at spots that the parser deems necessary.
-Contrary to what people are saying, the rules aren't really that complicated.
-Quirky, not complicated.
-The problem is that it's reading ahead to see if the semicolon should be inserted, so for example if you end a line with an identifier and start the next with an opening parens, the semicolon is not inserted, hence your identifier will be called as a function.
-Bad luck.
-The common idea on the threads seems to be, however, that "this takes hours to debug", etc, but I have to call craps on that.
-You'll usually get an error like "Number is not a function" or something similar, which is pretty obvious to debug, unless you were renaming functions which is a bit silly.
-And you just did something much worse than forgetting a semicolon anyway, you started a line with a parens, which you should avoid.
-The only valid case I have for starting a line is the common closure pattern, ``` (function(){}()); ```, but even that is potentially dangerous (you might concatenate minified files and oops, the return value of a closure is called as an argument of another closure).
-Instead, you should rather prefix it with a semicolon (which looks stupid btw), or you should start using a better pattern for it anyway: ``` void function(){}(); ```.
-There you have it, my tip for those of you who want to avoid semicolons.
-The funny thing here is that in a sense, avoiding semicolons actually *forces* you to use more sane patterns to avoid mistakes.
+Commonly abbreviated as ASI, it's an error recovery mechanism for missing semicolons, inserting them for you at spots that the parser deems necessary. Contrary to what people are saying, the rules aren't really that complicated. Quirky, not complicated. The problem is that it's reading ahead to see if the semicolon should be inserted, so for example if you end a line with an identifier and start the next with an opening parens, the semicolon is not inserted, hence your identifier will be called as a function. Bad luck. The common idea on the threads seems to be, however, that "this takes hours to debug", etc, but I have to call craps on that. You'll usually get an error like "Number is not a function" or something similar, which is pretty obvious to debug, unless you were renaming functions which is a bit silly. And you just did something much worse than forgetting a semicolon anyway, you started a line with a parens, which you should avoid. The only valid case I have for starting a line with parenthesis is the common closure pattern, `` (function(){}()); ``, but even that is potentially dangerous (you might concatenate minified files and oops, the return value of a closure is called as an argument of another closure). Instead, you should rather prefix it with a semicolon (which looks stupid btw), or you should start using a better pattern for it anyway: `` void function(){}(); ``. There you have it, my tip for those of you who want to avoid semicolons. The funny thing here is that in a sense, avoiding semicolons actually *forces* you to use more sane patterns to avoid mistakes.
 
 ### Why I use semicolons
 
-I bet you were just thinking that "great, another no-semicolon hipster", but I use them all right.
-I'm actually pretty obsessed about them, but that's in *my* code, not *your* code or anyone else's code.
-Quite frankly, I don't give a rat's ass whether you use them or not, if you know what you're doing.
-If not, it's your own grave you're digging.
-For me this started when I took my first steps as a programmer, writing some silly C, some 12 years ago.
-A few months later, I got introduced to JavaScript and pretty much just transferred my existing conventions there.
-Those conventions have changed over time, I've switched to soft tabs and back, spaces between keyword and parens or not, etc, but the semicolons have stayed.
-Why? Very simply because I'm used to it, I write a lot of code that doesn't insert semicolons for me, my tooling (jshint) complains if I don't use them, but I don't actually have a better reason to do so.
-It's quite simply just convention, convention that my tooling follows, convention I guess most people follow for now.
-But like I said, it actually leads to some bad decisions sometimes, I have ``` (function(){}()); ``` all over my code, but I'm going to replace them with the pattern I suggested (originally I spotted the pattern recently from the code of my brilliant colleague, [@JensNockert](https://twitter.com/#!/jensnockert)).
+I bet you were just thinking that "great, another no-semicolon hipster", but I use them all right. I'm actually pretty obsessed about them, but that's in *my* code, not *your* code or anyone else's code. Quite frankly, I don't give a rat's ass whether you use them or not, if you know what you're doing. If not, it's your own grave you're digging. For me this started when I took my first steps as a programmer, writing some silly C, some 12 years ago. A few months later, I got introduced to JavaScript and pretty much just transferred my existing conventions there. Those conventions have changed over time, I've switched to soft tabs and back, spaces between keyword and parens or not, etc, but the semicolons have stayed. Why? Very simply because I'm used to it, I write a lot of code that doesn't insert semicolons for me, my tooling (jshint) complains if I don't use them, but I don't actually have a better reason to do so. It's quite simply just convention, convention that my tooling follows, convention I guess most people follow for now. But like I said, it actually leads to some bad decisions sometimes, I have `` (function(){}()); `` all over my code, but I'm going to replace them with the pattern I suggested (originally I spotted the pattern recently from the code of my brilliant colleague, [@JensNockert](https://twitter.com/#!/jensnockert)).
 
 ### Breaking the Conventions
 
-Over the past few days, I've done a lot of introspection regarding this subject.
-I've seriously been thinking of dropping the semicolons myself as well, but I don't think I will, I'm too stuck in my ways.
-But I don't want to force these ways upon anyone else, there's not much benefit in either way.
-I very much doubt that your dropping semicolons is going to make anything harder for the beginners.
-Possibly even the other way, how can we tell if we don't try?
-If we were still holding on to old conventions, we'd be stuck with using document.write() and believing the sun revolves around the earth (which it of course does to a minimal extent).
-Sometimes we need to rethink things through and here's a good time to do so, I think.
-The common idea seems to be that we need to protect newcomers of the language from the "obscure" rules of ASI, but I disagree.
-You're going to have to learn most of it anyway to avoid returning undefined, etc, so you might as well learn it properly.
-It might just be more confusing when you're inserting a lot of semicolons and then there's even some added for you in places you didn't want to and you don't know why.
-Let's think this through before pointing fingers, although I know how eager you all are to point fingers.
-Can you actually come up with good reasons for using semicolons, other than that minifiers and other tools don't parse JavaScript properly, or this is the way we have always done it?
-I'd like to hear them.
+Over the past few days, I've done a lot of introspection regarding this subject. I've seriously been thinking of dropping the semicolons myself as well, but I don't think I will, I'm too stuck in my ways. But I don't want to force these ways upon anyone else, there's not much benefit in either way. I very much doubt that your dropping semicolons is going to make anything harder for the beginners. Possibly even the other way, how can we tell if we don't try? If we were still holding on to old conventions, we'd be stuck with using document.write() and believing the sun revolves around the earth (which it of course does to a minimal extent). Sometimes we need to rethink things through and here's a good time to do so, I think. The common idea seems to be that we need to protect newcomers of the language from the "obscure" rules of ASI, but I disagree. You're going to have to learn most of it anyway to avoid returning undefined, etc, so you might as well learn it properly. It might just be more confusing when you're inserting a lot of semicolons and then there's even some added for you in places you didn't want to and you don't know why. Let's think this through before pointing fingers, although I know how eager you all are to point fingers. Can you actually come up with good reasons for using semicolons, other than that minifiers and other tools don't parse JavaScript properly, or this is the way we have always done it? I'd like to hear them.
 
 ### Why semicolon in the first place?
 
-Brendan Eich wrote a [blog post](https://brendaneich.com/2012/04/the-infernal-semicolon/) about this which has more detail about why JS has semicolons and ASI in the first place. I might be misinterpreting, but it seems to me that he regrets that in his 10 days of developing the JS he introduced semicolons and ASI.
-I understand this sentiment, unless you're writing one-liners, the only logical place where you actually *need* semicolons in JS are the for-loops.
-And you shouldn't write one-liners.
-All right, semicolons can also be useful with control structures too, for example ``` while (true); if (something); else doSomething(); ```, but you should avoid them as well.
+Brendan Eich wrote a [blog post](https://brendaneich.com/2012/04/the-infernal-semicolon/) about this which has more detail about why JS has semicolons and ASI in the first place. I might be misinterpreting, but it seems to me that he regrets that in his 10 days of developing the JS he introduced semicolons and ASI. I understand this sentiment, unless you're writing one-liners, the only logical place where you actually *need* semicolons in JS are the for-loops. And you shouldn't write one-liners. All right, semicolons can also be useful with control structures too, for example `` while (true); if (something); else doSomething(); ``, but you should avoid them as well.
 
 ### My problem
 
-My problem in this whole mess is that I can't help but wonder why we are so aggressive and judgemental, especially in things like this that don't really matter for building great things.
-Semicolons have absolutely nothing to do with robust engineering, hacking or anything else.
-If you're having errors because of missing semicolons, you're doing something else wrong too.
-Semicolons are mostly aesthetics, don't make them more than that to you.
-It's not really worth your time, you could be doing something useful instead.
+My problem in this whole mess is that I can't help but wonder why we are so aggressive and judgemental, especially in things like this that don't really matter for building great things. Semicolons have absolutely nothing to do with robust engineering, hacking or anything else. If you're having errors because of missing semicolons, you're doing something else wrong too. Semicolons are mostly aesthetics, don't make them more than that to you. It's not really worth your time, you could be doing something useful instead.
