@@ -1,0 +1,132 @@
+@background: #1b1d1e;
+@foreground: #ccccc6;
+
+@dark-black: #262729;
+@light-black: #554444;
+ 
+@dark-red: #f92672;
+@light-red: #ff669d;
+
+@dark-green: #a6e22e;
+@light-green: #beed5f;
+
+@dark-yellow: #fd971f;
+@light-yellow: #e6db74;
+
+@dark-blue: #240f72;
+@light-blue: #66d9ef;
+
+@dark-magenta: #9e6ffe;
+@light-magenta: #9e6ffe;
+
+@dark-cyan: #5e7175;
+@light-cyan: #5e7175;
+
+@dark-white: #ccccc6;
+@light-white: #f8f8f2;
+
+* {
+    margin: 0;
+    position: relative;
+}
+
+body {
+    font-family: SansationRegular, Arial, sans-serif;
+    background-color: @background;
+    color: @foreground;
+}
+
+section {
+    display: block;
+    min-height: 600px;
+    padding: 0.5em;
+}
+
+a {
+    color: @light-green;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+nav > a {
+    width: 100px;
+    padding: 10px;
+    font-size: 120%;
+}
+
+nav > a, section {
+    background-color: @dark-black;
+    box-shadow: 0 0 1px @dark-black;
+}
+
+a.comments {
+    display: block;
+    margin: 10px;
+    text-align: right;
+}
+
+header > h1 {
+    margin: 20px;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 10px;
+}
+
+p {
+    line-height: 130%;
+}
+
+ul.tags {
+    display: block;
+    list-style-type: none;
+    background-color: @background;
+    padding: 8px;
+}
+
+ul.tags li {
+    display: inline-block;
+}
+
+article {
+    margin: 16px;
+}
+
+@media (min-width: 1000px) and (min-device-width: 1000px) {
+    header, nav, section {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Syntax highlighting */
+
+code {
+	display: inline-block;
+	background: @background;
+	color: @foreground;
+	white-space: pre;
+}
+code.block {
+	display: block;
+}
+
+code .st, code .re, code .hx, code .id, code .is {
+	color: @dark-yellow;
+}
+code .nm, code .vr, code .in {
+	color: @dark-green;
+}
+code .op, code .id, code .is {
+	font-weight: bold;
+}
+code .cm {
+	color: @light-green;
+}
+code .br, code .cn {
+	color: @dark-cyan;
+	font-weight: bold;
+}

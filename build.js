@@ -4,6 +4,7 @@ require('./build-files/files')
 
 var md = require('./build-files/md')
 var template = require('./build-files/templates')
+var less = require('less').render
 
 function ARTICLE (p) {
 	return p.firstParagraphHTML
@@ -101,4 +102,10 @@ tags.list.forEach(function (t) {
 		navHeader: Post.prototype.navHeader,
 		articlesHTML: tags.get(t).map(ARTICLE).join('\n'),
 	}))
+})
+
+ls('scss').forEach(function (sheet) {
+	less(read(['scss', sheet]), function (e, css) {
+		save(['public_html', 'css', sheet], css)
+	})
 })
