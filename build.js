@@ -6,7 +6,7 @@ var md = require('./build-files/md')
 var template = require('./build-files/templates')
 
 function ARTICLE (p) {
-	return p.articleHTML
+	return p.firstParagraphHTML
 }
 
 function Post (body, filename) {
@@ -20,6 +20,7 @@ function Post (body, filename) {
 
 	this.body = body
 	this.bodyHTML = md(body)
+	this.firstParagraph = this.bodyHTML.split('</p>')[0] + '</p>'
 
 	this.tagList = this.tags.split(' ')
 	this.tagsHTML = this.tagList.map(function (t) {
@@ -33,7 +34,8 @@ function Post (body, filename) {
 	}).bind(this))
 
 	this.articleHTML = template('article', this)
-	this.firstParagraph = this.articleHTML.split('</p>')[0] + '</p>'
+
+	this.firstParagraphHTML = template('article-paragraph', this)
 
 	posts.push(this)
 }
