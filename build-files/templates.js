@@ -16,4 +16,4 @@ module.exports = function (name, context) {
 	return templates[name](context)
 }
 
-module.exports.comments = []
+module.exports.comments = comments
