@@ -109,15 +109,19 @@ code {
 	background: @background;
 	color: @foreground;
 	white-space: pre;
+	font-family: monospace;
 }
 code.block {
 	display: block;
 }
 
-code .st, code .re, code .hx, code .id, code .is {
+code .st, code .re, code .hx, code .id, code .tn, code .av {
 	color: @dark-yellow;
 }
-code .nm, code .vr, code .in {
+.css .is {
+	color: @dark-magenta;
+}
+code .nm, code .vr, code .in, code .an {
 	color: @dark-green;
 }
 code .op, code .id, code .is {
@@ -126,7 +130,8 @@ code .op, code .id, code .is {
 code .cm {
 	color: @light-green;
 }
-code .br, code .cn {
+
+code .br, code .cn, code .sg, code .eg, .html .is, .html .op {
 	color: @dark-cyan;
 	font-weight: bold;
 }
