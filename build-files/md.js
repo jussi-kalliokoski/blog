@@ -2,7 +2,7 @@ var parsemd = require('github-flavored-markdown').parse
 var lowlite = require('lowlite')
 var highlight = lowlite.highlight
 
-function md (str) {
+module.exports = function (str) {
 	var r, i, p, s, m, n, l, b
 
 	r = []
