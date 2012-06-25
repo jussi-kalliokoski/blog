@@ -3,12 +3,7 @@
 require('./build-files/files')
 
 var md = require('./build-files/md')
-
-function simpleTemplate (template, data) {
-	return templates[template].replace(/<%\s*\$([^\s%]+)\s*%>/g, function (t, i) {
-		return data[i]
-	})
-}
+var template = require('./build-files/templates')
 
 function ARTICLE (p) {
 	return p.articleHTML
@@ -28,16 +23,16 @@ function Post (body, filename) {
 
 	this.tagList = this.tags.split(' ')
 	this.tagsHTML = this.tagList.map(function (t) {
-		return simpleTemplate('tag', {name: t})
+		return template('tag', {name: t})
 	}).join('\n')
 
-	comments.forEach((function (c) {
+	template.comments.forEach((function (c) {
 		if (({}).hasOwnProperty.call(this, c)) {
-			this.commentsHTML += simpleTemplate('comments-' + c, this)
+			this.commentsHTML += template('comments-' + c, this)
 		}
 	}).bind(this))
 
-	this.articleHTML = simpleTemplate('article', this)
+	this.articleHTML = template('article', this)
 	this.firstParagraph = this.articleHTML.split('</p>')[0] + '</p>'
 
 	posts.push(this)
@@ -52,7 +47,6 @@ Post.prototype = {
 }
 
 var posts = []
-var templates = {}
 var tags = {
 	add: function (name, post) {
 		if (!this.get(name)) {
@@ -73,18 +67,8 @@ var tags = {
 
 	list: [],
 }
-var comments = []
 
-ls('templates', /\.html$/i).forEach(function (p) {
-	var name = p.substr(0, p.length - 5)
-	templates[name] = read(['templates', p])
-
-	if (/^comments-.+$/.test(name)) {
-		comments.push(name.substr(9))
-	}
-})
-
-Post.prototype.navHeader = templates['nav-header']
+Post.prototype.navHeader = template('nav-header', {})
 
 ls('posts').forEach(function (year) {
 	ls(['posts', year], /\.md$/i).forEach(function (post) {
@@ -95,8 +79,8 @@ ls('posts').forEach(function (year) {
 posts.sort()
 posts.reverse()
 
-save('public_html/index.html', simpleTemplate('index', {
-	navHeader: templates['nav-header'],
+save('public_html/index.html', template('index', {
+	navHeader: Post.prototype.navHeader,
 	articlesHTML: posts.map(ARTICLE).join('\n'),
 }))
 
@@ -106,13 +90,13 @@ posts.forEach(function (p) {
 	})
 
 	save(['public_html', 'posts', p.filename + '.html'],
-		simpleTemplate('article-page', p))
+		template('article-page', p))
 })
 
 tags.list.forEach(function (t) {
-	save(['public_html', 'tags', t + '.html'], simpleTemplate('tag-page', {
+	save(['public_html', 'tags', t + '.html'], template('tag-page', {
 		name: t,
-		navHeader: templates['nav-header'],
+		navHeader: Post.prototype.navHeader,
 		articlesHTML: tags.get(t).map(ARTICLE).join('\n'),
 	}))
 })
