@@ -20,7 +20,7 @@ module.exports = function (str) {
 			break
 		}
 
-		m = str.substr(i + 3, n - i)
+		m = str.substr(i + 3, n - i - 3)
 
 		l = /^\w+/.exec(m)
 		l = l && l[0]
