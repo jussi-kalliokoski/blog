@@ -118,7 +118,7 @@ code.block {
 code .st, code .re, code .hx, code .id, code .tn, code .av {
 	color: @dark-yellow;
 }
-.css .is {
+.css .is, .javascript .kw {
 	color: @dark-magenta;
 }
 code .nm, code .vr, code .in, code .an {
