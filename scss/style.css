@@ -50,6 +50,10 @@ a:hover {
     text-decoration: underline;
 }
 
+.clear {
+    clear: both;
+}
+
 nav > a {
     width: 100px;
     padding: 10px;
@@ -105,33 +109,62 @@ article {
 /* Syntax highlighting */
 
 code {
-	display: inline-block;
-	background: @background;
-	color: @foreground;
-	white-space: pre;
-	font-family: monospace;
+    display: inline-block;
+    background: @background;
+    color: @foreground;
+    white-space: pre;
+    font-family: monospace;
+    padding: 0 2px;
 }
-code.block {
-	display: block;
+
+div.code {
+    width: 100%;
+    background: @background;
+    border-radius: 5px;
+    padding: 5px;
+    border: 2px solid @foreground;
+    box-shadow: 0 0 1px black, 0 0 1px black inset;
+    text-shadow: 1px 1px 1px black;
+    overflow: auto;
+
+    .ln {
+        float: left;
+        width: auto;
+        color: @dark-yellow;
+        white-space: pre;
+        font-family: monospace;
+    }
+
+    code {
+        display: block;
+        float: left;
+        padding: 0;
+    }
+}
+
+div.code .ln {
+}
+
+div.code code {
 }
 
 code .st, code .re, code .hx, code .id, code .tn, code .av {
-	color: @dark-yellow;
+    color: @dark-yellow;
 }
 .css .is, .javascript .kw {
-	color: @dark-magenta;
+    color: @dark-magenta;
 }
 code .nm, code .vr, code .in, code .an {
-	color: @dark-green;
+    color: @dark-green;
 }
 code .op, code .id, code .is {
-	font-weight: bold;
+    font-weight: bold;
 }
 code .cm {
-	color: @light-green;
+    color: @light-green;
 }
 
 code .br, code .cn, code .sg, code .eg, .html .is, .html .op {
-	color: @dark-cyan;
-	font-weight: bold;
+    color: @dark-cyan;
+    font-weight: bold;
 }
