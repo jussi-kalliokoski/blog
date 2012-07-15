@@ -2,6 +2,7 @@
     date: 2012/07/05
     tags: javascript ecmascript harmony concurrency generators threads coros coroutines
     issue: 5
+    hackernews: 4203749
 
 ### What on Earth are they?
 
@@ -166,7 +167,7 @@ Let's create a custom keyword ``` wait ``` that would complete all the outstandi
 Object.defineProperty(window, 'wait', {get: function () {
 	var xhr = new XMLHttpRequest()
 
-	xhr.open('GET', '#', false)
+	xhr.open('GET', 'data:text/plain;base64,YQ==', false)
 
 	try {
 		xhr.send(null)
@@ -175,7 +176,7 @@ Object.defineProperty(window, 'wait', {get: function () {
 
 ```
 
-There we have it. What it does is send a simple blocking XHR to force the JS engine to pause the stack. If you can think of a quicker address than '#', please let me know. Now let's try it out:
+There we have it. What it does is send a simple blocking XHR to force the JS engine to pause the stack. <del>If you can think of a quicker address than '#', please let me know</del>. EDIT: Devon Govett suggested using a Data URI, thanks Devon! Now let's try it out:
 
 ```javascript
 
