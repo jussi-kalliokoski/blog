@@ -98,14 +98,6 @@ article {
     margin: 16px;
 }
 
-@media (min-width: 1000px) and (min-device-width: 1000px) {
-    header, nav, section {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
 /* Syntax highlighting */
 
 code {
@@ -142,12 +134,6 @@ div.code {
     }
 }
 
-div.code .ln {
-}
-
-div.code code {
-}
-
 code .st, code .re, code .hx, code .id, code .tn, code .av {
     color: @dark-yellow;
 }
@@ -167,4 +153,18 @@ code .cm {
 code .br, code .cn, code .sg, code .eg, .html .is, .html .op {
     color: @dark-cyan;
     font-weight: bold;
+}
+
+@media (min-width: 1000px) and (min-device-width: 1000px) {
+    header, nav, section {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    div.code .ln {
+        display: none;
+    }
 }
