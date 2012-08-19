@@ -16,7 +16,9 @@ function createLineNumbers (str) {
 	}).join('\n')
 }
 
-module.exports = function (str) {
+module.exports = function (str, lineNumbers) {
+	lineNumbers = lineNumbers !== false
+
 	var r, i, p, s, m, n, l, b, c
 
 	r = []
@@ -45,7 +47,10 @@ module.exports = function (str) {
 			aliases: lowlite.shorthands
 		})
 
-		if (b) {
+		if (!lineNumbers) {
+			s += '<code>$' + r.length + ';</code>'
+			r.push(m.substr(l.length).trim())
+		} else if (b) {
 			s +=	'<div class="code"><div class="ln">$' +
 				r.length +
 				';</div><code class="' + l + '">$' +
