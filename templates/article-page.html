@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{language}}">
 <head>
-	<title>{{{title}}}</title>
+	<title>{{title}}</title>
 	<link rel="stylesheet" href="/css/style.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="keywords" content="{{{tagList}}}" />
+	<meta name="keywords" content="{{tagList}}" />
+	<meta name="author" content="{{author}}" />
+	<link rel="alternate" type="application/rss+xml" title="{{title}}" href="/rss.xml">
 </head>
 <body>
 	{{{navHeader}}}
 	<section>
 		<article>
-			<h2>{{{title}}}</h2>
+			<h2>{{title}}</h2>
 			{{{bodyHTML}}}
-			<p>Posted <time itemProp="publishDate" datetime="{{{date}}}">{{{date}}}</time>.</p>
+			<p>Posted <time itemProp="publishDate" datetime="{{date}}">{{date}}</time>.</p>
 			<ul class="tags">{{{tagsHTML}}}</ul>
 			{{{commentsHTML}}}
 		</article>

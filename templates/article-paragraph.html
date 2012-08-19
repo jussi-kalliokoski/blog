@@ -1,10 +1,10 @@
 <article>
-<h2><a href="/posts/{{{filename}}}">{{{title}}}</a></h2>
-<blockquote cite="/posts/{{{filename}}}">
+<h2><a href="{{link}}">{{title}}</a></h2>
+<blockquote cite="{{link}}">
 {{{firstParagraph}}}
 </blockquote>
-<p><a href="/posts/{{{filename}}}">Read more...</a></p>
-<p>Posted <time itemProp="publishDate" datetime="{{{date}}}">{{{date}}}</time>.</p>
+<p><a href="{{link}}">Read more...</a></p>
+<p>Posted <time itemProp="publishDate" datetime="{{date}}">{{date}}</time>.</p>
 <ul class="tags">{{{tagsHTML}}}</ul>
 {{{commentsHTML}}}
 </article>
