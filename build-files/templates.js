@@ -3,8 +3,11 @@ var handlebars = require('handlebars')
 var templates = {}
 var comments = []
 
-ls('templates', /\.html$/i).forEach(function (p) {
-	var name = p.substr(0, p.length - 5)
+ls('templates', /\.(html|xml)$/i).forEach(function (p) {
+	var name = p.split('.')
+	name.pop()
+	name = name.join('.')
+
 	templates[name] = handlebars.compile(read(['templates', p]))
 
 	if (/^comments-.+$/.test(name)) {
