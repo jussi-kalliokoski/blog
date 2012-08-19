@@ -3,4 +3,5 @@ public_html/css/style.css
 public_html/posts/*.html
 public_html/tags/*.html
 public_html/*.html
+public_html/*.xml
 node_modules
