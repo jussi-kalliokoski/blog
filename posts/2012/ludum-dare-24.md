@@ -30,13 +30,21 @@ The gameplay mechanics are pretty simple, you can throw rocks in the caves, or p
 
 As of writing this, I've implemented most of the physics and damage mechanisms. I'll try to keep this post up to date about my progress, but here's my roadmap on what's missing:
 
- * Level generation and features (e.g. caves, houses).
+ * Level generation and features (e.g. <s>caves</s>, houses).
  * AI. Currently the dudes are just standing still waiting for their deaths.
  * Water.
  * Maybe fire?
  * Art? It's just circles and rectangles now.
- * Music and sounds. I have a temptation to port [sfxr](http://www.drpetter.se/project_sfxr.html) to JS, but it'll have to wait.
+ * <s>Music and sounds</s>. I have a temptation to port [sfxr](http://www.drpetter.se/project_sfxr.html) to JS, but it'll have to wait.
 
 I'll keep the latest working version in [this address](http://labs.avd.io/evolution/).
 
 Now it's probably a good idea to get a little sleep. Oh yeah, my food today: pizza from yesterday and... Well, that was it.
+
+### Update 1
+
+YES! Now there's some cave generation. Not sure if it even makes sense to have houses in caves. The dudes should probably spawn somewhere not in the air though...
+
+### Update 2
+
+Woo, there's music and sounds now, courtesy of my very good friend Janne Huhta. One of the SFX is a public domain classic, the others are created for the occasion. I also added some background story and level changing, yay!
