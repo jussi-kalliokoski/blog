@@ -68,7 +68,7 @@ Simple enough, huh? The gist of it is to create a proxy that redirects property 
 ```javascript
 
 function MultiplePrototype (...prototypes) {
-  var chain = [{}].concat(prototypes)
+  var chain = [{}, ...prototypes]
 
   return new Proxy(chain[0], {
     get: function (target, name) {
