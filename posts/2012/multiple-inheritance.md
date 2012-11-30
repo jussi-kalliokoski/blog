@@ -36,6 +36,12 @@ EventedMonkey.prototype = function () {
       if (name in obj) return obj[name]
       if (name in protoA) return protoA[name]
       if (name in protoB) return protoB[name]
+    },
+
+    has: function (target, name) {
+      return name in obj ||
+        name in protoA ||
+        name in protoB
     }
   })
 }()
@@ -66,9 +72,17 @@ function MultiplePrototype (...prototypes) {
 
   return new Proxy(chain[0], {
     get: function (target, name) {
-      for (var i=0; i<chain.length; i++) {
-        if (name in chain[i]) return chain[i][name]
+      for (var obj of chain) {
+        if (name in obj) return obj[name]
       }
+    },
+
+    has: function (target, name) {
+      for (var obj of chain) {
+        if (name in obj) return true
+      }
+
+      return false
     }
   })
 }
