@@ -150,6 +150,10 @@ tags.list.forEach(function (t) {
 	}))
 })
 
+try {
+	require('fs').mkdirSync('public_html/css')
+} catch (ignore) {}
+
 ls('stylesheets').forEach(function (sheet) {
 	less(read(['stylesheets', sheet]), function (e, css) {
 		save(['public_html', 'css', sheet.replace(/\.less$/, '.css')], css)
