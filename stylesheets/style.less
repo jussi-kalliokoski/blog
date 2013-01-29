@@ -1,9 +1,11 @@
 @background: #1b1d1e;
 @foreground: #ccccc6;
 
+@shadow: #000000;
+
 @dark-black: #262729;
 @light-black: #554444;
- 
+
 @dark-red: #f92672;
 @light-red: #ff669d;
 
@@ -25,62 +27,176 @@
 @dark-white: #ccccc6;
 @light-white: #f8f8f2;
 
+@font-face {
+    font-family: 'SansationRegular';
+    src: url('../fonts/sansation/Sansation_Regular-webfont.eot');
+    src:
+        url('../fonts/sansation/Sansation_Regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/sansation/Sansation_Regular-webfont.woff') format('woff'),
+        url('../fonts/sansation/Sansation_Regular-webfont.ttf') format('truetype'),
+        url('../fonts/sansation/Sansation_Regular-webfont.svg#SansationRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'avdioicons';
+    src: url('../fonts/avdio-icons.eot');
+    src:
+        url('../fonts/avdio-icons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/avdio-icons.woff') format('woff'),
+        url('../fonts/avdio-icons.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
-    margin: 0;
-    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: @background;
+    color: @foreground;
+    font-family: SansationRegular, sans-serif;
+    font-size: 1.2em;
 }
 
 body {
-    font-family: SansationRegular, Arial, sans-serif;
-    background-color: @background;
-    color: @foreground;
-}
-
-section {
-    display: block;
-    min-height: 600px;
-    padding: 0.5em;
+    margin: 0;
 }
 
 a {
     color: @light-green;
     text-decoration: none;
 }
-a:hover {
+a:hover, a:focus {
     text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+p {
+    margin: 0.5em 0;
+    line-height: 130%;
 }
 
 .clear {
     clear: both;
 }
 
-nav > a {
-    width: 100px;
-    padding: 10px;
-    font-size: 120%;
+nav {
+    display: block;
 }
 
-nav > a, section {
+[aria-role="main"] {
     background-color: @dark-black;
-    box-shadow: 0 0 1px @dark-black;
+    padding: 1em;
+    min-height: 600px;
+}
+
+@media screen, projection, print {
+    nav a span {
+        position: relative;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        margin: 10px;
+
+        color: @foreground;
+        font-size: 0;
+        font-family: 'avdioicons';
+        -webkit-transition: color 0.4s ease-in-out;
+        -moz-transition: color 0.4s ease-in-out;
+        -ms-transition: color 0.4s ease-in-out;
+        -o-transition: color 0.4s ease-in-out;
+        transition: color 0.4s ease-in-out;
+    }
+
+    nav a {
+        outline: none;
+    }
+
+    nav a span:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 40px;
+        text-shadow: 1px 1px 2px @shadow;
+    }
+
+    nav a:hover, nav a:focus {
+        text-decoration: none;
+    }
+
+    nav a:hover span, nav a:focus span {
+        outline: none;
+        color: @light-white;
+    }
+
+    .icon-github:after {
+        content: 'g';
+    }
+    .icon-twitter:after {
+        content: 't';
+    }
+    .icon-google-plus:after {
+        content: '+';
+    }
+    .icon-linkedin:after {
+        content: 'l';
+    }
+    .icon-music:after {
+        content: 'm';
+    }
+    .icon-blog:after {
+        content: 'b';
+    }
+    .icon-about:after {
+        content: 'i';
+    }
+}
+
+@media (min-width:1200px) and (min-height:600px) {
+    [aria-role="main"] {
+        width: 960px;
+        margin: auto;
+        margin-bottom: 0.5em;
+        box-shadow: 0 0 3px black;
+        border-radius: 0 0 5px 5px;
+    }
+
+    nav {
+        top: 0;
+        left: 50%;
+        margin-left: -570px;
+        position: fixed;
+        width: 90px;
+    }
+
+    nav a {
+        display: block;
+        width: auto;
+    }
+
+    nav a span {
+        width: 64px;
+        height: 64px;
+    }
+
+    nav a span:after {
+        font-size: 80px;
+    }
 }
 
 a.comments {
     display: block;
     margin: 10px;
     text-align: right;
-}
-
-header > h1 {
-    margin: 20px;
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-    margin: 10px;
-}
-
-p {
-    line-height: 130%;
 }
 
 ul.tags {
@@ -155,14 +271,6 @@ code .cm {
 code .br, code .cn, code .sg, code .eg, .html .is, .html .op {
     color: @dark-cyan;
     font-weight: bold;
-}
-
-@media (min-width: 1000px) and (min-device-width: 1000px) {
-    header, nav, section {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-    }
 }
 
 @media (max-width: 800px) {
