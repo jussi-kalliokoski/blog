@@ -150,8 +150,8 @@ tags.list.forEach(function (t) {
 	}))
 })
 
-ls('scss').forEach(function (sheet) {
-	less(read(['scss', sheet]), function (e, css) {
-		save(['public_html', 'css', sheet], css)
+ls('stylesheets').forEach(function (sheet) {
+	less(read(['stylesheets', sheet]), function (e, css) {
+		save(['public_html', 'css', sheet.replace(/\.less$/, '.css')], css)
 	})
 })

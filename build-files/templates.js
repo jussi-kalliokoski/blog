@@ -3,7 +3,7 @@ var handlebars = require('handlebars')
 var templates = {}
 var comments = []
 
-ls('templates', /\.(html|xml)$/i).forEach(function (p) {
+ls('templates', /\.(handlebars)$/i).forEach(function (p) {
 	var name = p.split('.')
 	name.pop()
 	name = name.join('.')
