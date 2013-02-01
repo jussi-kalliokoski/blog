@@ -43,6 +43,8 @@ function Post (body, filename) {
 
 	this.pubDate = dateToXMLDate(this.pubDate)
 
+	this.datetime = this.date.replace(/\//g, '-')
+
 	this.body = body
 	this.bodyHTML = md(body)
 	this.bodyXML = md(body, false)
