@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-require('./build-files/files')
+require('./files')
 
-var md = require('./build-files/md')
-var template = require('./build-files/templates')
+var md = require('./md')
+var template = require('./templates')
 var less = require('less').render
 
 function dateToXMLDate (date) {
