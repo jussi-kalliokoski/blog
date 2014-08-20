@@ -1,0 +1,48 @@
+@import "variables/colors.styl"
+
+code
+    display: inline-block
+    background: $background
+    color: $foreground
+    padding: 0 2px
+
+    .st, .re, .hx, .id, .tn, .av
+        color: $dark-yellow
+
+    .nm, .vr, .in, .an
+        color: $dark-green
+
+    .br, .cn, .sg, .eg, &.html .is, &.html .op
+        color: $dark-cyan
+        font-weight: bold
+
+    .selector
+        color: $dark-cyan
+        font-weight: bold
+
+    .string
+        color: $dark-yellow
+
+    .function
+        color: $dark-green
+
+    .comment
+        color: $light-green
+
+    .keyword, .atrule
+        color: $dark-magenta
+
+    .punctuation
+        font-weight: bold
+        color: $foreground
+
+pre > code
+    overflow: auto
+    width: 100%
+    padding: 5px
+    border: 2px solid $foreground
+    border-radius: 5px
+    background: $background
+    font-size: 12px
+    box-shadow: 0 0 1px black, 0 0 1px black inset
+    text-shadow: 1px 1px 1px black

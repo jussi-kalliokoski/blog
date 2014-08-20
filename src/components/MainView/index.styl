@@ -1,0 +1,31 @@
+@import "../../stylesheets/variables/colors.styl"
+
+.MainView
+    min-height: 600px
+    padding: 1em
+    background-color: $dark-black
+    color: $foreground
+    font-family: SansationRegular, sans-serif
+    font-size: 1.2em
+
+    @media (min-width:1200px) and (min-height:600px)
+        width: 960px
+        margin: auto
+        margin-bottom: 0.5em
+        box-shadow: 0 0 3px black
+        border-radius: 0 0 5px 5px
+
+    a
+        color: $light-green
+        text-decoration: none
+
+    a:hover, a:focus
+        text-decoration: underline
+
+    h1, h2, h3, h4, h5, h6
+        margin-top: 0.5em
+        margin-bottom: 1em
+
+    p
+        margin: 0.5em 0
+        line-height: 130%

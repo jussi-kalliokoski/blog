@@ -1,5 +1,5 @@
     title: Vendor Prefixes - A Compromise
-    date: 2012/08/24
+    date: 2012-08-24
     tags: css html javascript vendor prefixes experimental
     issue: 6
 

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title><%= _.escape(package.title) %></title>
+        <link>http://juss.in/blog/</link>
+        <atom:link href="http://juss.in/rss.xml" rel="self" type="application/rss+xml" />
+        <description><%= _.escape(package.description) %></description>
+        <language><% package.language %></language>
+        <pubDate><%= (new Date()).toISOString() %></pubDate>
+        <lastBuildDate><%= (new Date()).toISOString() %></lastBuildDate><% posts.map(function (post) { %>
+        <item>
+            <title><%= _.escape(post.metadata.title) %></title>
+            <link>http://juss.in/blog/posts/<%= post.id %></link>
+            <pubDate><%= post.metadata.date.toISOString() %></pubDate>
+            <author>Jussi Kalliokoski</author>
+            <guid><%= post.id %></guid>
+            <description><%= _.escape(post.content) %></description>
+        </item><% }) %>
+    </channel>
+</rss>

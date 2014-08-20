@@ -1,5 +1,5 @@
     title: JavaScript Green Threads
-    date: 2012/07/05
+    date: 2012-07-05
     tags: javascript ecmascript harmony concurrency generators threads coros coroutines
     issue: 5
     hackernews: 4203749
@@ -12,22 +12,18 @@ Before we start, I want to make clear why I think it's important that you know o
 
 ### The short history of blocking JavaScript.
 
-You might already be familiar with all the built-in blocking operations in JavaScript. ``` alert() ```, ``` confirm() ``` and friends. All of these stop the execution of your code until what they're doing is complete. For example:
+You might already be familiar with all the built-in blocking operations in JavaScript. `alert()`, `confirm()` and friends. All of these stop the execution of your code until what they're doing is complete. For example:
 
 ```javascript
-
 var a = 123;
 alert(a);
 a = 2;
-
 ```
 
-Here, ``` a ``` becomes ``` 2 ``` only after the user has closed the alert box. Another blocker is JavaScript itself, of course. For example:
+Here, `a` becomes `2` only after the user has closed the alert box. Another blocker is JavaScript itself, of course. For example:
 
 ```javascript
-
 while (true);
-
 ```
 
 This usually blocks execution, at least until an unresponsive page popup comes up and asks you if you want to continue running the script or not.
@@ -41,17 +37,15 @@ Now we are going to walk through a few code examples. When you read them, I want
 Let's start with something simple (warning: running this will freeze your browser):
 
 ```javascript
-
 var forever = true;
 
 setTimeout(function () {
-	forever = false;	
+    forever = false;    
 }, 1000);
 
 while (forever);
 
 console.log('wat. Y WE HERE?');
-
 ```
 
 This one is logical, we have a timeout that will never occur because the thread is blocked by an infinite loop. Also, the logging operation on the last line will never happen.
@@ -59,12 +53,11 @@ This one is logical, we have a timeout that will never occur because the thread 
 The next one is quite similar:
 
 ```javascript
-
 var forever = true;
 
 window.onmessage = function () {
-	console.log('message');
-	forever = false;	
+    console.log('message');
+    forever = false;    
 };
 
 window.postMessage('*', '*');
@@ -74,7 +67,6 @@ console.log('posted message');
 while (forever);
 
 console.log('wat. Y WE HERE?');
-
 ```
 
 This will also freeze your browser with an infinite loop, until the browser decides it's time to issue a slow script warning. But this is where it gets different. If you press continue and look at your console, you will have the following output:
@@ -125,29 +117,27 @@ There are a few precautionary measures you can take to try to avoid the logic of
 So let's say you have a state that needs to essentially be locked (yes, as in mutex/lock) so that two stacks can't modify the state at the same time (well they won't be running the same time, but the other one might run in the middle of the other) as it might corrupt the state, exposing the user/server to potential data loss / security issues or such. What you need to do is make that state unreachable when it's being manipulated. This is easier than it sounds:
 
 ```javascript
-
 function MyClass () {
-	this.state = {
-		stuff: 1
-	};
+    this.state = {
+        stuff: 1
+    };
 }
 
 MyClass.prototype = {
-	manipulate: function () {
-		var state = this.state;
+    manipulate: function () {
+        var state = this.state;
 
-		if (!state) {
-			throw ReferenceError('Race condition failure!');
-		}
+        if (!state) {
+            throw ReferenceError('Race condition failure!');
+        }
 
-		this.state = null;
+        this.state = null;
 
-		// Do some potentially blocking manipulation here
+        // Do some potentially blocking manipulation here
 
-		this.state = state;
-	}
+        this.state = state;
+    }
 };
-
 ```
 
 This prevents the function from being called before the previous call was finished. It has an obvious wart though, as the state is reassigned at the end of the function. So if the function results in an error somewhere, even if you catch it, the function can't be called again, unless you manually reset the state. The state essentially becomes lost whenever there is an error.
@@ -160,28 +150,25 @@ As you may know, ES6 is going to have [generators](http://wiki.ecmascript.org/do
 
 But as we've already established, things happening in an expected order is not even the status quo. A lot of people have asked for deep coroutines, which is essentially that it would be ok to for example have a keyword that tells the JS engine to pause the current stack and complete outstanding tasks, and then continue the stack it was in. As you can see, the blog post I linked to suggests this might not even be possible, but I will show you that it is. Note that this is for educational purposes only, please do not use this in production. As a safety precaution, I'm not going to use semicolons in the code example to scare off the language newbies &lt;/sarcasm&gt;.
 
-Let's create a custom keyword ``` wait ``` that would complete all the outstanding tasks. "A new keyword?" you say, "impossible", you say. But not really, because the keyword doesn't have to act as an operator and should be used as a standalone expression. How we do this is by assigning a property getter to the global object:
+Let's create a custom keyword `wait` that would complete all the outstanding tasks. "A new keyword?" you say, "impossible", you say. But not really, because the keyword doesn't have to act as an operator and should be used as a standalone expression. How we do this is by assigning a property getter to the global object:
 
 ```javascript
-
 Object.defineProperty(window, 'wait', {get: function () {
-	var xhr = new XMLHttpRequest()
+    var xhr = new XMLHttpRequest()
 
-	xhr.open('GET', 'data:text/plain;base64,YQ==', false)
+    xhr.open('GET', 'data:text/plain;base64,YQ==', false)
 
-	try {
-		xhr.send(null)
-	} catch (e) {}
+    try {
+        xhr.send(null)
+    } catch (e) {}
 }})
-
 ```
 
 There we have it. What it does is send a simple blocking XHR to force the JS engine to pause the stack. <del>If you can think of a quicker address than '#', please let me know</del>. EDIT: Devon Govett suggested using a Data URI, thanks Devon! Now let's try it out:
 
 ```javascript
-
 window.onmessage = function (e) {
-	console.log(e.data);
+    console.log(e.data);
 };
 
 console.log('1');
@@ -190,19 +177,16 @@ console.log('2');
 window.postMessage('4', '*');
 wait;
 console.log('5')
-
 ```
 
 It works! The result is as follows:
 
 ```
-
 1
 2
 3
 4
 5
-
 ```
 
 Amazing, huh?

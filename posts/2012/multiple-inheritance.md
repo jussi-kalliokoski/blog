@@ -1,5 +1,5 @@
     title: Multiple Inheritance in ES6 with Proxies
-    date: 2012/11/28
+    date: 2012-11-28
     tags: javascript ecmascript harmony proxy prototype inheritance
     issue: 8
 
@@ -16,7 +16,6 @@ There's a limitation, however. Each object can only have one prototype, which me
 So why do you need multiple inheritance? Well, maybe you don't, some say it's bad, your call. But let's say you have a "class" named "Monkey". You also have a class named "EventEmitter", that is your generic favorite Event Emitter. Now, you want to make a monkey that can emit events, but you don't want the basic Monkey class to inherit from EventEmitter (it may already inherit from something that can't inherit from the EventEmitter), neither do you want the EventEmitter to inherit from the Monkey (right?????). The Monkey class handles events with onEvent function handles, but you want to use a sub/pub model. With proxies, here's what you can do:
 
 ```javascript
-
 function EventedMonkey () {
   /* call the inheritables' constructors */
   Monkey.call(this)
@@ -60,13 +59,11 @@ monkey.on('eat', function (what) {
 
 /* access from protoA */
 monkey.eat('bananas') // "Monkey is eating bananas"
-
 ```
 
 Simple enough, huh? The gist of it is to create a proxy that redirects property access to look through a list of objects, and boom, multiple prototypes. Of course, if we were silly, we could prematurely abstract this pattern into this:
 
 ```javascript
-
 function MultiplePrototype (...prototypes) {
   var chain = [{}, ...prototypes]
 
@@ -91,7 +88,6 @@ EventedMonkey.prototype = MultiplePrototype(
   Object.create(Monkey.prototype),
   Object.create(EventEmitter.prototype)
 )
-
 ```
 
 ### Words of Caution

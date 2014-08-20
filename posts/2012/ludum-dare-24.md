@@ -1,5 +1,5 @@
     title: Ludum Dare 24
-    date: 2012/08/26
+    date: 2012-08-26
     tags: games html5 javascript ludum dare ld24
     issue: 7
 

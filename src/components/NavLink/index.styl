@@ -1,0 +1,44 @@
+@import "../../stylesheets/variables/colors.styl"
+
+.NavLink
+    position: relative
+    display: inline-block
+    float: left
+    margin: 10px
+    width: 32px
+    height: 32px
+    font-size: 32px
+    color: $foreground
+    transition: color 0.4s ease-in-out
+    text-decoration: none
+    outline: none
+    text-shadow: 1px 1px 2px #000000
+
+    label
+        font-size: 0
+
+    &:hover, &:focus
+        color: $light-white
+        outline: none
+
+    @media (min-width:1200px) and (min-height:600px)
+        display: block
+        width: 64px
+        height: 64px
+        font-size: 64px
+
+    &--twitter
+        &:hover, &:focus
+            color: Twitter
+
+    &--google-plus
+        &:hover, &:focus
+            color: GooglePlus
+
+    &--linkedin
+        &:hover, &:focus
+            color: LinkedIn
+
+    &--music
+        &:hover, &:focus
+            color: Soundcloud

@@ -1,3 +1,0 @@
-RewriteEngine on
-RewriteBase /tags/
-RewriteRule ^([^.]+)$ $1.html [L]
