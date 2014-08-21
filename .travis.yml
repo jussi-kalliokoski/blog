@@ -1,3 +1,12 @@
 language: node_js
 node_js:
   - "0.10"
+before_deploy:
+  - "tar -pczf www.juss.in.tar.gz public"
+deploy:
+  provider: releases
+  api_key:
+    secure: RkC8ISBf8WiDJQPVyBhp1px1ZxRKJJlJ+sWcejW0E08x6rFFoL+dFHuuhoNH3Mt4DTiX45EgO2zJIOi1wudiHVPBIM8kSmvCqHwF4bRznoTSYw1TiSNSc0vaqNZiMvcr3CZd0Q50wqWWV/antKtBOsUYQVWH3c3u1KerCUwSZWI=
+  file: "www.juss.in.tar.gz"
+  on:
+    repo: jussi-kalliokoski/blog
