@@ -10,3 +10,5 @@ deploy:
   file: "www.juss.in.tar.gz"
   on:
     repo: jussi-kalliokoski/blog
+    tags: true
+    all_branches: true
