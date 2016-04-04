@@ -1,6 +1,5 @@
 {
   "node": true,
-  "browser": true,
   "onecase": true,
   "newcap": false,
   "maxlen": 140,

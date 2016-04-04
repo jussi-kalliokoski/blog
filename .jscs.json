@@ -1,11 +1,13 @@
 {
+  "esprima": "babel-jscs",
   "excludeFiles": [
     "node_modules/**",
     "bower_components"
   ],
-  "additionalRules": [
-    "node_modules/jscs-trailing-comma/rules/*.js"
+  "plugins": [
+    "jscs-trailing-comma"
   ],
+  "esnext": true,
   "requireTrailingCommaInExpandedLiterals": true,
   "requireCurlyBraces": [
     "if",
@@ -36,8 +38,6 @@
   "disallowMultipleVarDecl": true,
   "requireBlocksOnNewline": 1,
   "requireSpacesInsideObjectBrackets": "all",
-  "disallowDanglingUnderscores": true,
-  "disallowSpaceAfterObjectKeys": true,
   "requireCommaBeforeLineBreak": true,
   "requireOperatorBeforeLineBreak": true,
   "disallowSpaceAfterPrefixUnaryOperators": true,
