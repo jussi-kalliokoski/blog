@@ -1,9 +1,0 @@
-RewriteEngine on
-RewriteBase /
-RewriteRule ^\+(.*)$ https://plus.google.com/110037879191283883410/$1 [L]
-RewriteRule ^\$$ http://fi.linkedin.com/pub/jussi-kalliokoski/29/39b/948 [L]
-RewriteRule ^;$ https://github.com/jussi-kalliokoski [L]
-RewriteRule ^@$ http://twitter.com/quinnirill [L]
-RewriteRule ^q\^$ http://soundcloud.com/quinnirill [L]
-RewriteRule ^\{\}\|$ http://coderwall.com/jussi-kalliokoski [L]
-RewriteRule ^\[\]$ http://stackoverflow.com/users/998073/quinnirill [L]

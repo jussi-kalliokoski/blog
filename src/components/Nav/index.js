@@ -15,27 +15,27 @@ var links = [{
     caption: "Blog",
 }, {
     key: "github",
-    href: "/;",
+    href: "https://github.com/jussi-kalliokoski",
     tooltip: "My Github Profile",
     caption: "Github",
 }, {
     key: "twitter",
-    href: "/@",
+    href: "https://twitter.com/quinnirill",
     tooltip: "My Twitter Profile",
     caption: "Twitter",
 }, {
     key: "google-plus",
-    href: "/+",
+    href: "https://plus.google.com/110037879191283883410",
     tooltip: "My Google+ Page",
     caption: "Google+",
 }, {
     key: "linkedin",
-    href: "/$",
+    href: "https://fi.linkedin.com/pub/jussi-kalliokoski/29/39b/948",
     tooltip: "My LinkedIn Profile",
     caption: "LinkedIn",
 }, {
     key: "music",
-    href: "/q^",
+    href: "https://soundcloud.com/quinnirill",
     tooltip: "My Music",
     caption: "Music",
 }];

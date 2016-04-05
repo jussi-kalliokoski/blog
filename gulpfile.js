@@ -174,12 +174,7 @@ gulp.task("clean", function cleanBuild () {
         .pipe(clean());
 });
 
-gulp.task("static", ["clean"], function copyStaticFiles () {
-    return gulp.src(["**/*", "**/.*"], { cwd: "./src/static/", base: "./src/static/" })
-        .pipe(gulp.dest("./public"));
-});
-
-gulp.task("iconfonts", ["static"], function buildIconFonts () {
+gulp.task("iconfonts", ["clean"], function buildIconFonts () {
     return iconfonts()
         .pipe(gulp.dest("./public/assets/fonts/"));
 });
